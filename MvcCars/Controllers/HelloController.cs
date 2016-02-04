@@ -9,14 +9,23 @@ namespace MvcCars.Controllers
     public class HelloController : Controller
     {
         // GET: Hello
-        public string Index()
+        public string OldIndex()
         {
             return "Akcja <b>domyślna</b>.";
         }
 
-        public string Welcome(string name, int id = 1)
+        public ActionResult Welcome(string name, int id = 1)
         {
-            return HttpUtility.HtmlEncode("Witaj " + name + ", numer wizyty: " + id);
+            ViewBag.Message = "Witaj " + name;
+            ViewBag.Number = id;
+
+            return View();
         }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
     }
 }
